@@ -25,11 +25,10 @@ public class Main {
 
         System.out.println(persons.stream()
                 .filter(person -> person.getEducation() == Education.HIGHER)
-                .filter(person -> person.getSex() == Sex.WOMAN && person.getAge() > 17 && person.getAge() < 61 ||
-                        person.getSex() == Sex.MAN && person.getAge() > 17 && person.getAge() < 66)
+                .filter(person -> person.getAge() > 18)
+                .filter(person -> person.getSex() == Sex.WOMAN ? person.getAge() < 61 : person.getAge() < 66)
                 .sorted(Comparator.comparing(Person::getFamily))
                 .map(Person::getFamily)
                 .collect(Collectors.toList()));
-
     }
 }
